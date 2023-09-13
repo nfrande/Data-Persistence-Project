@@ -28,7 +28,7 @@ public class MenuUIHandler : MonoBehaviour
     {
       GameManager.Instance.playerName = inputField.GetComponent<TMPro.TextMeshProUGUI>().text;
       SceneManager.LoadScene(1);
-      Debug.Log(playerName);
+      Debug.Log(GameManager.Instance.playerName);
     }
 
     public void SubmitName(InputField userInput)
