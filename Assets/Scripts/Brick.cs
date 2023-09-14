@@ -10,6 +10,8 @@ public class Brick : MonoBehaviour
     
     public int PointValue;
 
+    
+
     void Start()
     {
         var renderer = GetComponentInChildren<Renderer>();
@@ -31,6 +33,8 @@ public class Brick : MonoBehaviour
                 break;
         }
         renderer.SetPropertyBlock(block);
+
+        
     }
 
     private void OnCollisionEnter(Collision other)

@@ -7,9 +7,19 @@ public class Ball : MonoBehaviour
 {
     private Rigidbody m_Rigidbody;
 
+    AudioSource audioSource;
+
+    public AudioClip bounce;
+
+    
+
+    
+
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        GameManager.Instance.maxSpeed = 3.0f;
+        audioSource = GetComponent<AudioSource>();
     }
     
     private void OnCollisionExit(Collision other)
@@ -26,11 +36,15 @@ public class Ball : MonoBehaviour
         }
 
         //max velocity
-        if (velocity.magnitude > 3.0f)
+        if (velocity.magnitude > GameManager.Instance.maxSpeed)
         {
-            velocity = velocity.normalized * 3.0f;
+            velocity = velocity.normalized * GameManager.Instance.maxSpeed;
         }
 
         m_Rigidbody.velocity = velocity;
+        if(other.gameObject.tag != "Brick")
+        {
+        audioSource.PlayOneShot(bounce, 1.0f);
+        }
     }
 }

@@ -5,17 +5,23 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class MenuUIHandler : MonoBehaviour
 {
     // public string playerName;
     public GameObject inputField;
+
+    public Text highScoreText;
     
     
     // Start is called before the first frame update
     void Start()
     {
       //  playerName.onEndEdit.AddListener(delegate { SubmitName(playerName);});
+          //highScoreText.text = $"High Score : {highScoreName}: {highScore}";
     }
 
     // Update is called once per frame
@@ -35,5 +41,14 @@ public class MenuUIHandler : MonoBehaviour
     {
      //   playerName = string.Parse(userInput.text);
      //   Debug.Log(userInput.text);
+    }
+
+    public void Quit()
+    {
+      #if UNITY_EDITOR
+      EditorApplication.ExitPlaymode();
+      #else
+      Application.Quit();
+      #endif
     }
 }

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public string playerName;
+
+    public float maxSpeed;
     // Start is called before the first frame update
     private void Awake()
     {
